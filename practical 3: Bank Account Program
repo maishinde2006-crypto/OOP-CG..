@@ -1,0 +1,47 @@
+import java.util.Scanner;
+ class BankApp{
+    String accountHolderName;
+    String accountNumber;
+    double balance;
+    public BankApp(String name, String accnumber, double initialdeposite){
+        this.accountHolderName=name;
+        this.accountHolderName=accnumber;
+        this.balance=initialdeposite;
+ }
+ void deposit(double amount){
+    balance+=amount;
+    System.out.println("$"+amount+"deposited.new balance:$"+balance);
+
+ }
+ void withdraw(double amount){
+    if(amount<= balance){
+    balance-= amount;
+    System.out.println("$"+amount+"withdraw.new balance:"+balance);
+ } 
+ else 
+ {
+    System.out.println("insfficient balance.");
+ }
+ }
+void displayDtails(){
+    System.out.println("\n account holder:"+accountHolderName);
+    System.out.println("account number:"+accountNumber);
+    System.out.println("balance:$"+balance);
+}
+}
+class Banksystem{
+public static void main(String[]args){
+    Scanner sc=new Scanner(System.in);
+    System.out.println("enter account holder name:");
+    String name=sc.nextLine();
+    System.out.print("enter the account number:");
+    String accnumber=sc.nextLine();
+    System.out.println("enter the initial deposit:");
+    double deposit=sc.nextDouble();
+    BankApp account=new BankApp(name, accnumber, deposit);
+    account.displayDtails();
+    account.deposit(1000);
+    account.withdraw(500);
+    account.displayDtails();
+}
+}
